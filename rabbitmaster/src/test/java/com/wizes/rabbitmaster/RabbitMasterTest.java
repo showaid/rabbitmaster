@@ -1,4 +1,4 @@
-package rabbitmaster;
+package com.wizes.rabbitmaster;
 
 import org.junit.Assert;
 import org.junit.Test;

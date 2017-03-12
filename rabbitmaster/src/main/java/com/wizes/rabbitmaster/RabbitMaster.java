@@ -105,9 +105,9 @@ public class RabbitMaster {
 			CloseableHttpResponse response = httpClient.execute(httppost);
 			int responseCode = response.getStatusLine().getStatusCode();
 
-			System.out.println("\nSending 'POST' request to URL : " + loginUrl);
-			System.out.println("Post parameters : " + formparams);
-			System.out.println("Response Code : " + responseCode);
+			logger.log(Level.INFO, "\nSending 'POST' request to URL : " + loginUrl);
+			logger.log(Level.INFO, "Post parameters : " + formparams);
+			logger.log(Level.INFO, "Response Code : " + responseCode);
 
 			BufferedReader rd = new BufferedReader(
 		                new InputStreamReader(response.getEntity().getContent()));
@@ -117,8 +117,8 @@ public class RabbitMaster {
 			while ((line = rd.readLine()) != null) {
 				result.append(line);
 			}
-
-			// System.out.println(result.toString());
+			
+			logger.log(Level.INFO, result.toString());
 			// set cookies
 			setCookies(response.getFirstHeader("Set-Cookie") == null ? "" :
 		                     response.getFirstHeader("Set-Cookie").toString());
